@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    <record id="seq_penumpang_pesawat" model="ir.sequence">
+        <field name="name">Penumpang Sequence</field>
+        <field name="code">penumpang.pesawat</field>
+        <field name="prefix">CP</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    </data>
+
+</odoo>

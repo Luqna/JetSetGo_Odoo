@@ -1,0 +1,14 @@
+<odoo>
+
+    <!-- <record model="ir.actions.client" id="action_view_dashboard">
+        <field name="name">dashboard</field>
+        <field name="tag">iframe_dashboard_client</field>
+    </record> -->
+
+    <record model="ir.actions.client" id="action_view_dashboard2">
+        <field name="name">dashboard</field>
+        <field name="tag">iframe_dashboard_pesawat</field>
+    </record>
+
+    <menuitem id="menu_dashboard" name="Dashboard" sequence="10" parent="kode_pesawat" action="action_view_dashboard2"/>
+</odoo>

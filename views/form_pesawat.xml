@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_penumpang_pesawat_kanban" model="ir.ui.view">
+        <field name="name">nama.penumpang.pesawat.kanban</field>
+        <field name="model">penumpang.pesawat</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="tanggal"/> 
+                <field name="asal"/>
+                <field name="kelas"/>
+                <field name="tujuan"/> 
+                <field name="reference_nama_pesawat"/>
+                <field name="umur"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul> 
+                                    <li>
+                                        <field name="name"/>
+                                    </li>
+                                    <li> 
+                                        <field name="gender"/>
+                                    </li>
+                                    <li> 
+                                        <field name="email"/>
+                                    </li>
+                                    <li> 
+                                        <field name="tanggal"/>
+                                    </li>
+                                    <li> 
+                                        <field name="asal"/>
+                                    </li>
+                                    <li> 
+                                        <field name="kelas"/>
+                                    </li>
+                                    <li> 
+                                        <field name="tujuan"/>
+                                    </li>
+                                    <li> 
+                                        <field name="reference_nama_pesawat"/>
+                                    </li>
+                                    <li> 
+                                        <field name="umur"/>
+                                    </li>
+                                    <li> 
+                                        <field name="harga" options="{'invisible': [( '!=', 'done')]}"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record> 
+
+    <record id="view_penumpang_pesawat_tree" model="ir.ui.view">
+        <field name="name">penumpang.pesawat.tree</field>
+        <field name="model">penumpang.pesawat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <header>
+                    <button name="action_confirm" string="Done" class="btn-primary" type="object"/>
+                </header> -->
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="umur"/>
+                <field name="tanggal"/> 
+                <field name="asal"/>
+                <field name="tujuan"/> 
+                <field name="kelas"/>
+                <field name="reference_nama_pesawat"/>
+                <!-- <field name="state"/> -->
+                <field name="harga" options="{'invisible': [( '!=', 'done')]}"/>
+            </tree>
+        </field>          
+    </record>
+
+    <record id="view_penumpang_pesawat_form" model="ir.ui.view">
+        <field name="name">penumpang.pesawat.form</field>
+        <field name="model">penumpang.pesawat</field>
+        <!-- <field name="inherit_id" ref="pesawat.view_penumpang_pesawat_form" /> -->
+        <field name="arch" type="xml">
+            <form string="Pemesanan Tiket Pesawat">
+                <header>
+                    <button name="duplicate_to_confirmation" type="object" string="Konfirmasi Pemesanan" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group> 
+                           
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="email"/>
+                            <field name="umur"/>
+                            <field name="tanggal"/>
+                        </group>
+                        <group> 
+                            <field name="asal"/>
+                            <field name="tujuan"/> 
+                            <field name="reference_nama_pesawat"/>
+                            <field name="kelas"/>
+                            <field name="harga" options="{'invisible': [( '!=', 'done')]}"/>
+                        </group> 
+                    </group> 
+                </sheet>
+            </form> 
+        </field>          
+    </record>
+
+    <record id ="view_penumpang_pesawat_search" model="ir.ui.view">
+        <field name="name">penumpang.pesawat.search</field>
+        <field name="model">penumpang.pesawat</field>
+        <field name="arch" type="xml">
+            <search string="pesawat">
+                <field name="name"/>
+                <field name="tujuan"/>
+                <separator/>
+                <filter string="Laki-laki" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Perempuan" name="female" domain="[('gender', '=', 'female')]"/>
+                <filter string="other" name="Other" domain="[('gender', '=', 'Other')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by' : 'gender'}"/>
+                    <filter string="Tanggal" name="tanggal" context="{'group_by' : 'tanggal'}"/>
+                    <filter string="Asal" name="asal" context="{'group_by' : 'asal'}"/>
+                    <filter string="Tujuan" name="tujuan" context="{'group_by' : 'tujuan'}"/>
+                    <!-- <filter string="Plane" name="plane" context="{'group_by' : 'plane'}"/> -->
+                    <filter string="Asal" name="asal" context="{'group_by' : 'asal'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="penumpang_pesawat_action" model="ir.actions.act_window">
+        <field name="name">Pemesanan Tiket</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">penumpang.pesawat</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                create your first trip and travel with us!!
+            </p>
+        </field>
+    </record>
+    
+    <menuitem 
+        id="kode_pesawat" 
+        name="Pesawat" 
+        sequence="10"/>
+        
+    <menuitem
+        id="pemesanan_tiket"
+        name="Pemesanan Tiket"
+        parent="kode_pesawat"
+        sequence="10"/>
+
+    <menuitem
+        id="pemesanan_tiket_pesawat"
+        name="Pemesanan Tiket Pesawat"
+        parent="pemesanan_tiket"
+        action="penumpang_pesawat_action"
+        sequence="10"/>
+    
+</odoo>
+
+    

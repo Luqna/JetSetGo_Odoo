@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_nama_pesawat_tree" model="ir.ui.view">
+        <field name="name">nama.pesawat.tree</field>
+        <field name="model">nama.pesawat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <header>
+                    <button name="action_confirm" string="Done" class="btn-primary" type="object"/>
+                </header> -->
+                <field name="reference_pesawat"/>
+                <field name="name_pesawat"/>
+                <field name="kode_pesawat"/>
+                <field name="note_pesawat"/>
+                <field name="status_pesawat"/>
+            </tree>
+        </field>          
+    </record>
+
+    <record id="view_nama_pesawat_form" model="ir.ui.view">
+        <field name="name">nama.pesawat.form</field>
+        <field name="model">nama.pesawat</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference_pesawat" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group> 
+                            <field name="name_pesawat"/>
+                            <field name="kode_pesawat"/>
+                        </group>
+                        <group> 
+                            <field name="note_pesawat"/>
+                            <field name="status_pesawat"/>
+                        </group> 
+                    </group> 
+                </sheet>
+            </form> 
+        </field>          
+    </record>
+
+    <!-- action -->
+    <record id="nama_pesawat_id" model="ir.actions.act_window">
+        <field name="name">Nama Pesawat</field>
+        <field name="res_model">nama.pesawat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Here's your name of plane
+            </p>
+        </field>
+    </record>
+
+    <menuitem 
+        id="nama_pesawat_admin" 
+        name="Data Terkait Pemesanan" 
+        sequence="10" 
+        parent="kode_pesawat"/>
+    
+    <menuitem
+        id="nama_pesawat"
+        name="Nama Pesawat"
+        parent="nama_pesawat_admin"
+        action="nama_pesawat_id"
+        sequence="10"/>
+</odoo>

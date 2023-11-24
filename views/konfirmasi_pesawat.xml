@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_konfirmasi_tiket_pesawat_tree" model="ir.ui.view">
+        <field name="name">konfirmasi.pesawat.tree</field>
+        <field name="model">konfirmasi.pesawat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="umur"/>
+                <field name="tanggal"/>
+                <!-- <field name="reference_nama_pesawat"/>  -->
+                <field name="asal"/>
+                <field name="tujuan"/> 
+                <field name="kelas"/>
+                <field name="state"/>
+                <field name="harga" options="{'invisible': [('state', '!=', 'done')]}"/>
+            </tree>
+        </field>          
+    </record>
+
+    <record id="view_konfirmasi_tiket_pesawat_form" model="ir.ui.view">
+        <field name="name">konfirmasi.pesawat.form</field>
+        <field name="model">konfirmasi.pesawat</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" state="confirm" confirm="Apakah anda yakin ingin menyetujui?" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                    <button id="button_duplicate" string="Terkonfirmasi" type="object" class="oe_highlight" name="duplicate_confirm"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="name"/>
+                            <field name="tanggal"/>
+                            <field name="asal"/>
+                            <field name="tujuan"/>
+                        </group>
+                        <group>
+                            <field name="umur"/>
+                            <field name="gender"/>
+                            <field name="kelas"/>
+                            <!-- <field name="reference_nama_pesawat"/>  -->
+                            <field name="harga"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+    <record id="konfirmasi_tiket_pesawat_id" model="ir.actions.act_window">
+        <field name="name">Konfirmasi</field>
+        <field name="res_model">konfirmasi.pesawat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Here's your confirmation ticket!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem 
+        id="konfirmasi_tiket_pesawat" 
+        name="Konfirmasi Pemesanan" 
+        sequence="10" 
+        parent="pemesanan_tiket" 
+        action="konfirmasi_tiket_pesawat_id"/>
+
+</odoo>

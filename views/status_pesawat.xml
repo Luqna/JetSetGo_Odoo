@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_status_tiket_pesawat_form" model="ir.ui.view">
+        <field name="name">status.pesawat.form</field>
+        <field name="model">status.pesawat</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="name"/>
+                            <field name="tanggal"/>
+                            <field name="asal"/>
+                            <field name="tujuan"/>
+                        </group>
+                        <group>
+                            <field name="umur"/>
+                            <field name="gender"/>
+                            <field name="kelas"/>
+                            <field name="harga"/>
+                            <!-- <field name="note"/> -->
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_status_tiket_pesawat_tree" model="ir.ui.view">
+        <field name="name">status.pesawat.tree</field>
+        <field name="model">status.pesawat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="umur"/>
+                <field name="tanggal"/> 
+                <field name="asal"/>
+                <field name="tujuan"/> 
+                <field name="kelas"/>
+                <field name="state"/>
+                <field name="harga"/>
+            </tree>
+        </field>          
+    </record>
+
+    
+    <record id="status_tiket_pesawat_id" model="ir.actions.act_window">
+        <field name="name">Status Konfirmasi</field>
+        <field name="res_model">status.pesawat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_noncontent_smiling_face">
+                Here's your confirmation ticket!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem 
+        id="status_tiket_pesawat" 
+        name="Status Konfirmasi Pemesanan" 
+        sequence="10" 
+        parent="pemesanan_tiket" 
+        action="status_tiket_pesawat_id"/>
+
+</odoo>

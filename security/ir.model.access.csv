@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_penumpang_pesawat,accsess.penumpang.pesawat,model_penumpang_pesawat,,1,1,1,1
+access_menu_dashboard,access.menu.dashboard,model_menu_dashboard,,1,1,1,1
+access_nama_pesawat,accsess.nama.pesawat,model_nama_pesawat,,1,1,1,1
+access_konfirmasi_pesawat,accsess.konfirmasi.pesawat,model_konfirmasi_pesawat,,1,1,1,1
+access_status_pesawat,accsess.status.pesawat,model_status_pesawat,,1,1,1,1
