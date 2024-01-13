@@ -1,7 +1,7 @@
 {
-    'name' : 'Penjualan Tiket Pesawat',
+    'name' : 'JetSetGo',
     'author' : 'luqna',
-    'summary' : 'Lets try your first travel with us!',
+    'summary' : 'Make us be your partner travel! ^^',
     'application' : True,
     'depends' : ['mail'],
     'images' : ['static/description/*.png'] ,
